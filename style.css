@@ -1,0 +1,149 @@
+body{
+    font-family: 'Ubuntu', sans-serif;
+    transition: all .3s ease;
+}
+body.dark{
+    background: black;
+    color: white;
+}
+
+.logo__steam, .logo__mate{
+    max-height: 45px;
+    max-width: auto;
+}
+
+/* .logo__mate{
+    max-height: 50px;
+    max-width: auto;
+} */
+
+/* CARRITO SLIDE */
+
+#carrito{
+    position: fixed;
+    transform: translateX(0);
+    z-index: 1;
+    right: 0;
+    width: 400px;
+    height: 100%;
+    right: -400px;
+    background-color: #828282;
+    color: white;
+    padding: 10px 0px 0px 10px;
+    transition: all 0.5s ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+#carrito.active{
+    right: 0px;
+}
+body.dark #carrito{
+    box-shadow: rgba(255, 255, 255, 0.35) 0px 5px 15px;
+}
+
+.carrito_boton{
+    background-color: white;
+    cursor: pointer;
+    border-radius: 25%;
+}
+
+.portada{
+    max-width: 50%;
+    max-height: auto;
+}
+
+/* -------------------------------- */
+
+/* Dark Mode */
+.switch{
+    background-color: #343d5b;
+    border-radius: 1000px;
+    border: none;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    outline: none;
+}
+.switch::after{
+    content: "";
+    display: block;
+    width: 31px;
+    height: 31px;
+    position: absolute;
+    background: #F1F1F1;
+    top: 0;
+    left: 0;
+    right: unset;
+    border-radius: 100px;
+    transition: all .8s ease;
+    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, .2);
+}
+.switch.activeDM{
+    background: orange;
+    color: #000;
+}
+.switch.activeDM::after{
+    right: 0;
+    left: unset;
+}
+
+.switch span{
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    display: block;
+    background: none;
+    color: #fff;
+}
+/* -------------------------------------------- */
+
+/* POP UP */
+.overlay{
+    background: rgba(0, 0, 0, .5);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    visibility: hidden;
+}
+.overlay.activeOverlay{
+    visibility: visible;
+}
+
+.popUp{
+    background: #cccccc;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, .3);
+    border-radius: 3px;
+    padding: 20px;
+    text-align: center;
+    width: 600px;
+    transition: all ease .3s;
+    transform: scale(0.7);
+    opacity: 0;
+}
+.popUp.activePopup{
+    opacity: 1;
+    transform: scale(1);
+}
+body.dark .popUp{
+    color: black;
+}
+
+.popUp p{
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.cerrar__popUp{
+    display: block;
+    font-size: 16px;
+    line-height: 16px;
+    text-align: right;
+    color: grey;
+    transition: all .3s ease;
+}
+.cerrar__popUp:hover{
+    color: red;
+}
