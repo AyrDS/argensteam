@@ -52,13 +52,32 @@
         <div id="carrito">
             <p>Tu carrito</p>
             <hr>
-            <template id="template_carrito">
-                <img src="" alt="">
-                <p></p>
-                <p></p>
-                <button class="btn btn-info btn-sm"> + </button>
-                <button class="btn btn-danger btb-sm"> - </button>
-            </template>
+            <div id="carrito-productos">
+                <p>No tienes productos agregados</p>
+                <template id="template_carrito">
+                    <div class="d-flex flex-row justify-content-between carrito-productos">
+                        <img src="" alt="Imagen Producto" class="carrito__img">
+                        <div>
+                            <p></p>
+                            <p>$<span></span></p>
+                            <p>Cantidad: <span></span></p>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="d-block">
+                                <button class="btn btn-info btn-sm"> + </button>
+                                <button class="btn btn-danger btn-sm"> - </button>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+                <template id="template__foot">
+                    <hr>
+                    <div id="footer" class="d-flex flex-row justify-content-between align-items-center">
+                        <button class="btn btn-danger btn-sm" id="vaciar-carrito">Vaciar carro</button>
+                        <p><b>Total:</b> $<span>0</span></p>
+                    </div>
+                </template>
+            </div>
         </div>
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2">
