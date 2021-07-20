@@ -211,13 +211,11 @@ const eventoBtn = e => {
 
     e.stopPropagation();
 }
-
+/* ANIMACIÓN CARRO DE COMPRAS */
 const animacion = carro =>{
     $(carro).animate({
-        width: '65px',
-        heigth: '65px'},1500, function(){
+        fontSize: "45px"},500, function(){
             $(carro).animate({
-                width: '40px',
-                heigth: '40px'}, 1500);
+                fontSize: "35px"}, 500);
         });
 }
