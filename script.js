@@ -67,7 +67,7 @@ for (const producto of productos) {
         <p>$<span>${producto.precio}</span></p>
         <button type="button" data-id="${producto.id}" class="btn btn-outline-success btn-comprar mx-auto d-block">Comprar</button>`;
 
-    contenedor.classList.add("col", "text-center", "producto", "mb-5", producto.categoria);
+    contenedor.classList.add("col", "text-center", "producto", `producto_${producto.id}`, "mb-5", producto.categoria);
     contenedor.setAttribute("id", "producto");
     catalogo.appendChild(contenedor);
 }
@@ -121,6 +121,7 @@ btnCerrarPopup.addEventListener("click", () => {
 const agregarCarrito = e => {
     if (e.target.classList.contains("btn-comprar")) {
         setCarrito(e.target.parentElement);
+        animacion(btnCarrito);
     }
     e.stopPropagation();
 }
@@ -140,6 +141,7 @@ const setCarrito = objeto => {
     }
     carrito[producto.id] = {...producto};
     mostrarCarrito();
+
 }
 
 const mostrarCarrito = () => {
@@ -168,15 +170,17 @@ const mostrarFoot = () => {
         carritoProductos.innerHTML = `<p> No tienes productos agregados </p>`;
 
         return;
+        
+    }else{
+        const nPrecio = Object.values(carrito).reduce((acumulador, {cantidad, precio}) => acumulador + cantidad * precio, 0);
+
+        templateFoot.querySelector("span").textContent = nPrecio;
+    
+        const clone = templateFoot.cloneNode(true);
+        fragment.appendChild(clone);
+        carritoProductos.appendChild(fragment);
     }
-
-    const nPrecio = Object.values(carrito).reduce((acumulador, {cantidad, precio}) => acumulador + cantidad * precio, 0);
-
-    templateFoot.querySelector("span").textContent = nPrecio;
-
-    const clone = templateFoot.cloneNode(true);
-    fragment.appendChild(clone);
-    carritoProductos.appendChild(fragment);
+    
     /* VACIAR CARRO */
     const btnVaciar = document.getElementById("vaciar-carrito");
     btnVaciar.addEventListener("click", () => {
@@ -206,4 +210,14 @@ const eventoBtn = e => {
     }
 
     e.stopPropagation();
+}
+
+const animacion = carro =>{
+    $(carro).animate({
+        width: '65px',
+        heigth: '65px'},1500, function(){
+            $(carro).animate({
+                width: '40px',
+                heigth: '40px'}, 1500);
+        });
 }
