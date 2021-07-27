@@ -65,7 +65,7 @@ function mostrarCatalogo(productos) {
         let contenedor = document.createElement("div");
 
         contenedor.innerHTML =
-            `<img src="img/productos/${producto.id}.jpg" class="portada mx-auto d-block">
+            `<img src="img/productos/${producto.id}.jpg" class="portada mx-auto d-block" alt="Foto portada de ${producto.nombre}">
             <p class="mt-3 fw-bold">${producto.nombre}</p>
             <p class="fw-bold">$<span>${producto.precio}</span></p>
             <button type="button" data-id="${producto.id}" class="btn btn-outline-success btn-comprar mx-auto d-block">Comprar</button>`;
