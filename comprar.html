@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/f64a2be8d7.js" crossorigin="anonymous"></script>
+    <title>ArgenSteam - Comprar</title>
+</head>
+
+<body>
+    <header class="container pt-5">
+        <div class="d-flex justify-content-center">
+            <img src="img/mate.png" alt="" class="logo__mate d-block m-0 pe-2">
+            <h1 class="m-0 p-0">ArgenSteam</h1>
+            <img src="img/steam.png" alt="" class="logo__steam d-block m-0 ps-2">
+        </div>
+
+        <div>
+            <p class="text-center mt-4"> <a href="index.html">Volver al Catalogo</a></p>
+        </div>
+    </header>
+
+    <main class="container mb-5">
+        <div id="layout">
+            <h3 class="text-center">Finalice su compra</h3>
+            <hr>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2">
+                <div class="col" id="verCarro">
+                    <hr id="separacion">
+                    <p class="text-end">Total a pagar:<span class="total"></span></p>
+                    <form action="" id="formDescuento">
+                        <label for="">Si tiene un código de descuento, ingreselo:</label>
+                        <input type="text" class="d-block mt-2 inputCodigo" id="inputCodigo">
+                        <button type="submit" class="mt-2 btn btn-success" id="btnAplicar">Aplicar descuento</button>
+                    </form>
+                </div>
+                <div class="col mt-5 mt-sm-0">
+                    <form action="" id="formComprar">
+                        <div>
+                            <label for="name">Nombre y apellido</label>
+                            <input type="text" class="d-block name" id="name" value="Ayrton Da Silva">
+                        </div>
+                        <div id="idEmail">
+                            <label class="mt-4" for="emailCompra">Email</label>
+                            <input type="email" class="d-block" id="emailCompra" value="hola@hola.com">
+                        </div>
+                        <div class="d-lg-flex align-items-center">
+                            <div id="idTarjeta">
+                                <label class="mt-4" for="tarjeta">Tarjeta de credito</label>
+                                <input type="number" class="d-block tarjetaCredito" id="tarjeta"
+                                    value="1234567891234567">
+                            </div>
+                            <div class="ms-lg-5" id="idVencimiento">
+                                <label class="mt-4" for="vencimiento">Vencimiento</label>
+                                <input type="text" placeholder="00/00" id="vencimiento" class="d-block vencimiento"
+                                    maxlength="5" value="12/29">
+                            </div>
+                        </div>
+                        <div id="idCvv">
+                            <label class="mt-4" for="seguridad">CVV</label>
+                            <input type="number" placeholder="000" id="cvv" class="d-block cvv" maxlength="3"
+                                value="123">
+                        </div>
+                        <div>
+                            <button class="btn btn-success mt-4" type="submit" id="btnComprar">Comprar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </main>
+
+    <footer class="pt-4 pb-4 border-top border-light">
+        <p class="text-center mt-2 mb-0">Created by <a class="fw-bold" href="https://www.linkedin.com/in/ayrds/"
+                target="_blank">Ayrton Da Silva</a></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <script src="JS/db.js"></script>
+    <script src="JS/comprar.js"></script>
+</body>
+
+</html>

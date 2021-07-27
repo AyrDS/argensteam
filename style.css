@@ -1,48 +1,59 @@
-body{
+body {
     font-family: 'Ubuntu', sans-serif;
     transition: all .3s ease;
 }
-body.dark{
+
+body.dark {
     background: black;
     color: white;
 }
 
-.logo__steam, .logo__mate{
+.logo__steam,
+.logo__mate {
     max-height: 45px;
     max-width: auto;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
 
+body.dark a {
+    color: white;
+}
 
 /* CARRITO SLIDE */
 
-#carrito{
+#carrito {
     position: fixed;
     transform: translateX(0);
     z-index: 1;
     right: 0;
-    width: 300px;
+    width: 350px;
     height: 100%;
-    right: -300px;
+    right: -350px;
     background-color: #828282;
     color: white;
     padding: 10px 15px 0px 15px;
     transition: all 0.5s ease-in-out;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-#carrito.active{
+
+#carrito.active {
     right: 0px;
 }
-body.dark #carrito{
+
+body.dark #carrito {
     box-shadow: rgba(255, 255, 255, 0.35) 0px 5px 15px;
 }
 
-.fa-shopping-cart{
+.fa-shopping-cart {
     font-size: 35px;
     cursor: pointer;
 }
 
-.portada{
+.portada {
     max-width: 50%;
     max-height: auto;
 }
@@ -50,13 +61,13 @@ body.dark #carrito{
 /* -------------------------------- */
 
 /* MOSTRAR CARRITO */
-.carrito__img{
+.carrito__img {
     max-height: 100px;
     max-width: auto;
 }
 
 /* Dark Mode */
-.switch{
+.switch {
     background-color: #343d5b;
     border-radius: 1000px;
     border: none;
@@ -65,7 +76,8 @@ body.dark #carrito{
     display: flex;
     outline: none;
 }
-.switch::after{
+
+.switch::after {
     content: "";
     display: block;
     width: 31px;
@@ -79,16 +91,18 @@ body.dark #carrito{
     transition: all .8s ease;
     box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, .2);
 }
-.switch.activeDM{
+
+.switch.activeDM {
     background: orange;
     color: #000;
 }
-.switch.activeDM::after{
+
+.switch.activeDM::after {
     right: 0;
     left: unset;
 }
 
-.switch span{
+.switch span {
     width: 30px;
     height: 30px;
     line-height: 30px;
@@ -96,57 +110,119 @@ body.dark #carrito{
     background: none;
     color: #fff;
 }
+
 /* -------------------------------------------- */
-
-/* POP UP */
-.overlay{
-    background: rgba(0, 0, 0, .5);
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    display: grid;
-    place-items: center;
-    visibility: hidden;
-}
-.overlay.activeOverlay{
-    visibility: visible;
-}
-
-.popUp{
-    background: #cccccc;
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, .3);
-    border-radius: 3px;
-    padding: 20px;
-    text-align: center;
-    width: 600px;
-    transition: all ease .3s;
-    transform: scale(0.7);
-    opacity: 0;
-}
-.popUp.activePopup{
-    opacity: 1;
-    transform: scale(1);
-}
-body.dark .popUp{
-    color: black;
-}
-
-.popUp p{
-    font-weight: bold;
-    font-size: 30px;
-}
-
-.cerrar__popUp{
-    display: block;
-    font-size: 16px;
-    line-height: 16px;
-    text-align: right;
-    color: grey;
+.select {
+    color: #198754;
+    border: none;
     transition: all .3s ease;
 }
-.cerrar__popUp:hover{
-    color: red;
+
+/* FOOTER */
+.error {
+    border: 2px solid red;
 }
-/* -------------------- */
+
+.pass {
+    border: 2px solid green;
+
+}
+
+body.dark .select {
+    background-color: black;
+}
+
+.fa-instagram,
+.fa-facebook-square {
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* SPINNER */
+.spinner {
+    display: none;
+    margin: 30px auto 0;
+    width: 70px;
+    text-align: center;
+}
+
+.spinner>div {
+    width: 18px;
+    height: 18px;
+    background-color: #333;
+
+    border-radius: 100%;
+    display: inline-block;
+    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+body.dark .spinner>div {
+    background-color: white;
+}
+
+.spinner .bounce1 {
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+
+    0%,
+    80%,
+    100% {
+        -webkit-transform: scale(0)
+    }
+
+    40% {
+        -webkit-transform: scale(1.0)
+    }
+}
+
+@keyframes sk-bouncedelay {
+
+    0%,
+    80%,
+    100% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+
+    40% {
+        -webkit-transform: scale(1.0);
+        transform: scale(1.0);
+    }
+}
+
+/* SECCION COMPRAR */
+
+.fotoCompra {
+    max-width: 20%;
+    max-height: 20%;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+#vencimiento,
+#cvv {
+    width: 65px;
+    appearance: none;
+}
+
+.nice{
+    max-width: 10%;
+    max-height: auto;
+}
