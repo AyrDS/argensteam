@@ -1,5 +1,6 @@
 //VARIABLES
-
+const buscador = document.querySelector("#buscadorProductos");
+const inputBuscador = document.querySelector("#inputBuscador");
 const btnCarrito = document.querySelector(".carrito_boton");
 const carritoProductos = document.querySelector("#carrito-productos");
 const templateCarrito = document.querySelector("#template_carrito").content;
@@ -45,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     btnEnviar.disabled = true;
 });
 
+buscador.addEventListener("submit", buscarProducto);
 
 catalogo.addEventListener("click", e => {
     agregarCarrito(e);
@@ -185,7 +187,6 @@ const mostrarCarrito = () => {
     mostrarFoot();
 
     localStorage.setItem("carrito", JSON.stringify(carrito));
-    console.log(carrito);
 }
 
 const mostrarFoot = () => {
@@ -266,7 +267,6 @@ precioMax.addEventListener("change", e => {
 function filtrarBusqueda() {
     const resultado = productos.filter(filtrarCategoria).filter(filtrarMinimo).filter(filtrarMaximo);
 
-
     mostrarCatalogo(resultado);
 };
 
@@ -318,18 +318,18 @@ function validarEmail(e) {
         e.target.classList.remove("pass");
         e.target.classList.add("error");
 
-        mostrarMensaje("Email no válido")
+        mostrarMensaje("Email no válido", "mensajeError", newletter)
     }
 };
 
-function mostrarMensaje(mensaje) {
+function mostrarMensaje(mensaje, clase, ubicacion) {
     const mensajeError = document.createElement("p");
     mensajeError.textContent = mensaje;
-    mensajeError.classList.add("mensajeError");
+    mensajeError.classList.add(clase, "text-danger", "m-0");
 
-    const errores = document.querySelectorAll(".mensajeError");
+    const errores = document.querySelectorAll(`.${clase}`);
     if (errores.length === 0) {
-        newletter.appendChild(mensajeError);
+        ubicacion.appendChild(mensajeError);
     }
 };
 
@@ -341,7 +341,7 @@ function enviarEmail() {
     setTimeout(() => {
         spinner.style.display = "none";
 
-        mostrarMensaje("¡Gracias por suscribirte!");
+        mostrarMensaje("¡Gracias por suscribirte!", "mensajeError", newletter);
         setTimeout(() => {
             const errores = document.querySelector(".mensajeError");
             errores.remove();
@@ -349,3 +349,35 @@ function enviarEmail() {
     }, 2000)
 }
 
+//BUSCADOR
+function buscarProducto(e) {
+    e.preventDefault();
+
+    const header = document.querySelector("header")
+    let texto = inputBuscador.value.toLowerCase();
+
+    if (texto !== "") {
+        const error = document.querySelector(".mensajeBuscador");
+        if (error) {
+            error.remove();
+        }
+
+        let buscar = productos.find(producto => producto.nombre.toLowerCase() === texto)
+        console.log(buscar);
+        
+        if (buscar) {
+            let arrayBuscar = [buscar];
+            const titulo = document.querySelector("#titulo");
+            mostrarCatalogo(arrayBuscar);
+            titulo.textContent = `Filtrado por: ${texto}`;
+        } else {
+            mostrarMensaje("Producto no encontrado", "mensajeBuscador", header);
+        }
+    } else {
+        const error = document.querySelector(".mensajeBuscador");
+        if (error) {
+            error.remove();
+        }
+        mostrarMensaje("Ingrese un producto a buscar", "mensajeBuscador", header);
+    }
+}

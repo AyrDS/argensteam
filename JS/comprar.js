@@ -157,7 +157,7 @@ function validarFormulario(e) {
 function mostrarMensaje(mensaje, clase, ubicacion) {
     const mensajeError = document.createElement("p");
     mensajeError.textContent = mensaje;
-    mensajeError.classList.add(clase, "mb-1", "fw-bold");
+    mensajeError.classList.add(clase, "mb-1", "fw-bold", "text-danger");
 
     const errores = document.querySelectorAll(`.${clase}`);
     if (errores.length === 0) {
@@ -198,6 +198,7 @@ function comprar(e) {
     const layout = document.querySelector("#layout");
     const main = document.querySelector("main");
     layout.remove();
+    localStorage.removeItem("carrito");
 
     spinner.style.display = "flex";
 
